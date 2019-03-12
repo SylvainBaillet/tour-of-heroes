@@ -1,0 +1,28 @@
+<ul class="heroes">
+  <!-- les crochets permettent de faire le lien avec le template html, les parentheses font l'inverse, le lien du template vers le ts (ici avec les crochets, on appelle ces champs qui se trouvent dans le template) -->
+  <li [class.selected]="hero === selectedHero" (click)="selectHero(hero)" *ngFor="let hero of heroes"> <span class="badge">{{hero.id }}</span>
+   <span class="text">{{ hero.name}}</span>  <!-- cette ecriture est une concatenation pour afficher l'id et le name -->
+    </li>
+  <!-- heroes ici est le nom du tableau que l'on a declaré dans app.component.ts -->
+</ul>
+
+Nom du heros <input type="text" name="heroToAdd" id="HeroName" [(ngModel)]="heroToAdd" />
+<!-- on créé un boutton -->
+<!-- on créé l'evenement (click) pour dire ici au clic sur le bouton, on va declarer une fonction dans app.component.ts , en jquery on aurait écrit $('button').click(function({})) -->
+<button (click)="addHero()">ajouter un heros</button>
+<app-hero-details [hero]="selectedHero" *ngIf="selectedHero"></app-hero-details>
+<!-- <section *ngIf="selectedHero">
+  <h2>Détails du héros {{ selectedHero.name }}</h2>
+  <div>
+    <span> {{ selectedHero.id }} </span> {{ selectedHero.name }}
+  </div>
+</section> -->
+
+<!--<li class="selected btn btn-success"></li>
+ class Li {
+  class : {
+    selected: true,
+    btn: true,
+    btn-success: true
+  }
+}pour que un element de mon Dom ait la class, il faut que le champ ait la class, et que selected soit vraie -->
